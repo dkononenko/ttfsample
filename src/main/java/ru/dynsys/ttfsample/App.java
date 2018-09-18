@@ -35,9 +35,4 @@ public class App {
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(App.class, args);
     }
-
-    @Autowired
-    private CatService catService;
-    @Autowired
-    private TaskExecutor transactionalTaskExecutor;
 }
