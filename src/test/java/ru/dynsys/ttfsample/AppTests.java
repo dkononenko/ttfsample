@@ -35,7 +35,6 @@ public class AppTests {
         observer.assertValueCount(100);
     }
 
-
     @Autowired
     private CatService catService;
     @Autowired
