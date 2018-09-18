@@ -16,7 +16,7 @@ import javax.persistence.TransactionRequiredException;
 @SpringBootTest
 public class AppTests {
     @Test
-    public void shouldError() throws InterruptedException {
+    public void testShouldError() throws InterruptedException {
         Observable.range(1, 100)
                 .map(n -> catService.create(String.format("Cat #%d", n)))
                 .test()
@@ -24,7 +24,7 @@ public class AppTests {
     }
 
     @Test
-    public void shouldOk() throws InterruptedException {
+    public void testShouldOk() throws InterruptedException {
         TestObserver<Cat> observer = Observable.range(1, 100)
                 .observeOn(Schedulers.from(transactionalTaskExecutor))
                 .map(n -> catService.create(String.format("Cat #%d", n)))
