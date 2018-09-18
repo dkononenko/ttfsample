@@ -20,8 +20,6 @@ public class App {
         taskExecutor.setThreadFactory(threadFactory);
         taskExecutor.setCorePoolSize(availableProcessors);
         taskExecutor.setMaxPoolSize(availableProcessors);
-        taskExecutor.setQueueCapacity(16);
-        taskExecutor.setThreadNamePrefix("TTE-");
         taskExecutor.afterPropertiesSet();
 
         return taskExecutor;
