@@ -13,11 +13,11 @@ import java.util.concurrent.ThreadFactory;
 @SpringBootApplication
 public class App {
     @Bean
-    public TaskExecutor transactionalTaskExecutor(ThreadFactory threadFactory) {
+    public TaskExecutor transactionalTaskExecutor(ThreadFactory transactionalThreadFactory) {
         final int availableProcessors = Runtime.getRuntime().availableProcessors();
 
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        taskExecutor.setThreadFactory(threadFactory);
+        taskExecutor.setThreadFactory(transactionalThreadFactory);
         taskExecutor.setCorePoolSize(availableProcessors);
         taskExecutor.setMaxPoolSize(availableProcessors);
         taskExecutor.afterPropertiesSet();
