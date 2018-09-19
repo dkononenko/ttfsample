@@ -10,10 +10,10 @@ import org.springframework.transaction.support.TransactionTemplate;
 import java.util.Objects;
 import java.util.concurrent.ThreadFactory;
 
-@Component
 public class TransactionalThreadFactory implements ThreadFactory {
-    @Autowired
     public TransactionalThreadFactory(PlatformTransactionManager transactionManager) {
+        Objects.requireNonNull(transactionManager);
+        
         transactionTemplate = new TransactionTemplate(transactionManager);
     }
 
