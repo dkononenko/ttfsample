@@ -14,13 +14,9 @@ import java.util.concurrent.ThreadFactory;
 public class App {
     @Bean
     public TaskExecutor transactionalTaskExecutor(ThreadFactory transactionalThreadFactory) {
-        final int availableProcessors = Runtime.getRuntime().availableProcessors();
-
-        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor("RX-TX-");
         taskExecutor.setThreadFactory(transactionalThreadFactory);
-        taskExecutor.setCorePoolSize(availableProcessors);
-        taskExecutor.setMaxPoolSize(availableProcessors);
-        taskExecutor.afterPropertiesSet();
+        taskExecutor.setConcurrencyLimit(16);
 
         return taskExecutor;
     }
